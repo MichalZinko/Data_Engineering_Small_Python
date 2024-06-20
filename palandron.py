@@ -1,3 +1,11 @@
+
+print('Palandron Tester')
+
+def main_menu():
+    print('Input the word that you want to check')
+    test = input()
+    return test
+
 def palindrom(word):
     starting_letter_index = 0
     ending_letter_index  = -1
@@ -11,4 +19,5 @@ def palindrom(word):
         starting_letter_index += 1
         ending_letter_index -= 1
 
-palindrom('ka a  ak')
+word = main_menu()
+palindrom(word)
