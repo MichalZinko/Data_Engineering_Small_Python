@@ -1,11 +1,12 @@
 
 print('Palandron Tester')
+order()
 
 def main_menu():
     print('Input the word that you want to check')
     test = input()
     return test
-
+    
 def palindrom(word):
     starting_letter_index = 0
     ending_letter_index  = -1
@@ -19,5 +20,20 @@ def palindrom(word):
         starting_letter_index += 1
         ending_letter_index -= 1
 
-word = main_menu()
-palindrom(word)
+def ending():
+    print('Do you want to continue')
+    print('If yes press Y if No press N')
+    anwser = input()
+    if anwser == 'Y':
+        order()
+    elif anwser == 'N':
+        exit 
+    else:
+        print('That is not a valid option')
+        ending() 
+
+def order():
+    word = main_menu()
+    palindrom(word)
+    ending()
+
