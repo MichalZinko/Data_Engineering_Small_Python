@@ -69,13 +69,42 @@ def arithmetic_arranger(problems, show_answers=False):
     dashes_line = ''.join(dashes_list)
     if show_answers == True:
         anwser_line = ''.join(anwser_list)
-        problems = "\n".join((upper_line, lower_line, dashes_line, anwser_line))
+        text = "\n".join((upper_line, lower_line, dashes_line, anwser_line))
     else:
-        problems = "\n".join((upper_line, lower_line, dashes_line))
-    return problems      
+        text = "\n".join((upper_line, lower_line, dashes_line))
+    return text      
 
-#print(f'\n{arithmetic_arranger(["11 + 4", "3801 - 2999", "1 + 2", "123 + 49", "1 - 9380"], True)}') 
+def main_menu():
+    equasions = input()
+    list = equasions.split(",")
+    clean_list = []
+    for equasion in list:
+        check = equasion.strip()
+        clean_equasion = check.split()
+        if len(clean_equasion) != 3:
+            print("Please make sure there is a space and betwen equasion and operator")
+            main_menu()
+        else:
+            clean_list.append(check)
+    return clean_list
 
-print(f'\n{arithmetic_arranger(["32 - 698", "1 - 3801", "45 + 43", "123 + 49", "988 + 40"], True)}') 
+def anwser(): 
+    print("Input y if yes or n if no")
+    anwser = input().lower().strip()
+    if anwser == 'y':
+        full_view = True
+    elif anwser == 'n':
+        full_view = False
+    else:
+        print("Please select a valid option")
+        main_menu()
+    return full_view
 
-arithmetic_arranger(["32 - 698", "1 - 3801", "45 + 43", "123 + 49", "988 + 40"], True) 
+print('~Welcome to arithmetic arranger~')
+print('Input your problem and make sure there is a space and betwen equasion and operator and that you seperate equestions with ,')
+clean_list = main_menu()
+print(clean_list)
+print("Do you want to see the anwsers")
+full_view = anwser() 
+
+print(f'\n{arithmetic_arranger(clean_list, full_view)}') 
